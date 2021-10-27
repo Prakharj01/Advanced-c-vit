@@ -16,5 +16,4 @@ fp=fopen("myfile2.txt","r");
 printf("%s",fgets(text,200,fp));  
   
 fclose(fp);  
-
 }  
