@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<conio.h>
 int main()
 {
     FILE *fptr;
@@ -21,7 +20,7 @@ FILE *fptr2;
 fptr2=fopen("somefile.txt", "w");
 fputs(str2,fptr2);
 //fgets(rea,9,fptr2);
-
+fputs("Hey there buddy", fptr2);
 
 fclose(fptr2);
 //getch();
@@ -74,7 +73,15 @@ fprintf(fptr,"STRING TO BE INPUT");
 int getc (FILE *fp)
 
 //write a single character
-int putc(int c, FILE *fp)
+int putc(char c, FILE *fp)
+
+
+int fgetc(File *ptr);
+reads a character one by one
+
+int fgets(constant char ch*,int n, File *ptr);
+reads n character from the file and stores it in ch variable.
+it stops when either (n-1) characters are read, the newline character is read, or the end-of-file is reached, whichever comes first.
 
 
 

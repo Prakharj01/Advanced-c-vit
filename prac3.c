@@ -1,42 +1,37 @@
-#include<stdio.h>
-#include<string.h>
+// C function showing how to do time delay
+#include <stdio.h>
+// To use time library of C
+#include <time.h>
 
-int multi (int a,int b){
-    return a*b; 
+void delay(int number_of_seconds)
+{
+	// Converting time into milli_seconds
+	int milli_seconds = 1000 * number_of_seconds;
 
+	// Storing start time
+	clock_t start_time = clock();
+
+	// looping till required time is not achieved
+	while (clock() < start_time + milli_seconds)
+		;
 }
-int divi (int a,int b){
-    return a/b;   
-}
-int addit(int a,int b){
-    return a+b;   
-}
-int modul (int a,int b){
-    return a%b;   
-}
-int main(){
-    int (*funcptr[4])(int,int)={multi,addit,modul,divi};
-    int value,a,b;
-    char fchar[20];
-    printf("Enter operation: ");
-    scanf("%s",fchar);
-    if(strcmp(fchar,"multi")==0){
-         value=0;
-    }
-    if(strcmp(fchar,"addit")==0){
-        value=1;
-    }
-    if(strcmp(fchar,"modul")==0){
-        value=2;
-    }
-    if(strcmp(fchar,"div")==0){
-        value=3;
-    }
-    printf("Enter values for a and b: ");
-    scanf("%d",&a);
-    scanf("%d",&b);
-    printf("Answer: ");
-    int result=funcptr[value](a,b);
-    printf("%d",result);
-    return 0;
+
+// Driver code to test above function
+int main()
+{
+	int i;
+    time_t t;   // not a primitive datatype
+    time(&t);
+
+    printf("\nStart time is : %s", ctime(&t));
+
+	for (i = 0; i < 10; i++) {
+		// delay of one second
+		delay(1000);
+		printf("%d seconds have passed\n", i + 1);
+	}
+
+    time(&t);
+    printf("\nEnd time is : %s", ctime(&t));
+	return 0;
 }

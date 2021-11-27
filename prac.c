@@ -1,45 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-struct day{
-char *ch;
-float *f;
-int length;
-};
-int main()
-{
-    struct day a[3];
-
-    int n = 0;
-int j=0;
-for(int i=0;i<3;i++){
-    a[i].ch = (char *)malloc(20 * sizeof(char));
-     printf("Enter day %d: ",i+1);
-     scanf("%s", a[i].ch);
-    //printf("%s",a[i].ch);
-    while((a[i].ch[j])!='\0')
-    {
-        j++;
-    }
-    n=j;
-   // printf("n is: %d",n);
-        if (a[i].ch[j] == '\0')
-        {
-            n = j;
-            a[i].ch = (char *)realloc(a[i].ch, n * sizeof(char));
-        }
-        a[i].length=n;
-        //printf("Length is %d",a[i].length);
-    a[i].f=(float *)malloc(n*sizeof(float));
-
-    for(int k=0;k<n;k++){
-        scanf("%f",&(a[i].f[k]));
- }   }
-
-for(int i=0;i<3;i++){
-    printf("User %d\n",i+1);
-    for(j=0;j<a[i].length;j++){
-        printf("%f\n",a[i].f[j]);
-    }
-}
-    return 0;
+#include<stdio.h>
+#include<graphics.h>
+ 
+int main(){
+   int gd = DETECT,gm;
+   int x ,y;
+   initgraph(&gd, &gm, "C:\\TC\\BGI");
+   /* Initialize center of circle with center of screen */
+   x = getmaxx()/2;
+   y = getmaxy()/2;
+ 
+   outtextxy(240, 50, "Concentric Circles");
+   /* Draw circles on screen */
+   setcolor(RED);
+   circle(x, y, 30);
+   setcolor(GREEN);
+   circle(x, y, 50);
+   setcolor(YELLOW);
+   circle(x, y, 70);
+   setcolor(BLUE);
+   circle(x, y, 90);
+ 
+   getch();
+   closegraph();
+   return 0;
 }
