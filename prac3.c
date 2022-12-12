@@ -1,37 +1,80 @@
-// C function showing how to do time delay
-#include <stdio.h>
-// To use time library of C
-#include <time.h>
+#include<stdio.h>
+#include<stdlib.h>
+struct employee{
+  char name[30];
+  int empid;
+  char streetname[100];
+  int choice;
+  union address{
+  char pincode[20];
+  char locality[100];
 
-void delay(int number_of_seconds)
-{
-	// Converting time into milli_seconds
-	int milli_seconds = 1000 * number_of_seconds;
+}add;
+};
+  
+int main(){
+    int choice,num;
+    char temp[30];
+    char c;
+    FILE *onel;
+    FILE *onep;
+    //printf("Enter your choice: ");
+    scanf("%d",&choice);
+    //printf("Enter number of employees: ");
+    scanf("%d",&num);
+    
+struct employee *emp;
+emp=(struct employee *)malloc(sizeof(struct employee));
+    if(choice>0 && choice <6){
+        onel=fopen("file1.txt","a+");
+    for(int i=0;i<num;i++){
+        scanf("%s",emp[i].name);
+        scanf("%d",&emp[i].empid);
+        scanf("%s",emp[i].streetname);
+        scanf("%s",emp[i].add.locality);
+        fprintf(onep,"emp name: %s\nempid: %d, emp streetname: %s,emp locality: %s",emp[i].name,emp[i].empid,emp[i].streetname,emp[i].add.locality);
+        
+    }
+    
+        fclose(onel);
+    onel=fopen("file1.txt","r");
 
-	// Storing start time
-	clock_t start_time = clock();
-
-	// looping till required time is not achieved
-	while (clock() < start_time + milli_seconds)
-		;
-}
-
-// Driver code to test above function
-int main()
-{
-	int i;
-    time_t t;   // not a primitive datatype
-    time(&t);
-
-    printf("\nStart time is : %s", ctime(&t));
-
-	for (i = 0; i < 10; i++) {
-		// delay of one second
-		delay(1000);
-		printf("%d seconds have passed\n", i + 1);
-	}
-
-    time(&t);
-    printf("\nEnd time is : %s", ctime(&t));
-	return 0;
+    c=fgetc(onel);
+    while(c!=EOF){
+        //printf("%c",c);
+        c=fgetc(onel);
+    }
+        for(int i=0;i<num;i++){
+            printf("%s\n",emp[i].add.locality);
+        }
+    }
+    if (choice>5 && choice <10){
+           onep=fopen("file2.txt","a+");
+    for(int i=0;i<num;i++){
+        scanf("%s",emp[i].name);
+        scanf("%d",&emp[i].empid);
+        scanf("%s",emp[i].streetname);
+        scanf("%s",emp[i].add.locality);
+        fprintf(onep,"emp name: %s\nempid: %d, emp streetname: %s,emp locality: %s",emp[i].name,emp[i].empid,emp[i].streetname,emp[i].add.locality);
+        
+        
+    }
+        fclose(onep);
+        onep=fopen("file2.txt","r");
+    
+    c=fgetc(onep);
+    while(c!=EOF){
+       // printf("%c",c);
+        c=fgetc(onep);
+    }
+    fclose(onep);
+            for(int i=0;i<num;i++){
+            printf("%s\n",emp[i].add.pincode);
+        }
+    }
+    
+    
+    
+    return 0;
+    
 }

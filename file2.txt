@@ -1,0 +1,3 @@
+emp name: David
+empid: 189, emp streetname: street1,emp locality: 600025emp name: Daniel
+empid: 189, emp streetname: street2,emp locality: 600065
